@@ -14,13 +14,13 @@
       <section>
         {{ .Content }}
       </section>
+      <aside>
+        <form action="{{ "search" | absURL }}" method="get">
+          <input id="search-query" name="s"/>
+          <button type="submit">Search</button>
+        </form>
+      </aside>
       <section id="search-results">
-        <aside>
-          <form action="{{ "search" | absURL }}" method="get">
-            <input id="search-query" name="s"/>
-            <button type="submit">Search</button>
-          </form>
-        </aside>
       </section>
     </article>
   </main>

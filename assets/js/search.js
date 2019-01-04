@@ -23,8 +23,20 @@ if(searchQuery){
   jQuery("#search-query").val(searchQuery);
   executeSearch(searchQuery);
 }else {
-  jQuery('#search-results').append("<p>Please enter a word or phrase above</p>");
+  jQuery('#search-results').html("<p>Please enter a word or phrase above</p>");
 }
+
+// Prevents default submission and handle's the search dynamically.
+// Added to provide functionality in GitLab Pages. See issue:
+// https://gitlab.com/gitlab-org/gitlab-pages/issues/191
+jQuery("#search-query").parent().submit(function( event ) {
+  if(jQuery("#search-query").val()){
+    executeSearch(jQuery("#search-query").val());
+  } else {
+    jQuery('#search-results').html("<p>Please enter a word or phrase above</p>");
+  }
+  event.preventDefault();
+});
 
 function executeSearch(searchQuery){
   jQuery.getJSON( "/index.json", function( data ) {
@@ -35,12 +47,13 @@ function executeSearch(searchQuery){
     if(result.length > 0){
       populateResults(result);
     }else{
-      jQuery('#search-results').append("<p>No matches found</p>");
+      jQuery('#search-results').html("<p>No matches found</p>");
     }
   });
 }
 
 function populateResults(result){
+  jQuery('#search-results').html("");
   jQuery.each(result,function(key,value){
     var contents= value.item.contents;
     var snippet = "";
