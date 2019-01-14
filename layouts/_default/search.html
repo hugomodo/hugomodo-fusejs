@@ -11,9 +11,9 @@
         {{/* The partial is included with the base HugoModo theme. */}}
         {{ partial "article/header.html" . }}
       {{ end }}
-      <section>
+      <div>
         {{ .Content }}
-      </section>
+      </div>
       <aside>
         <form action="{{ "search" | absURL }}" method="get">
           <input id="search-query" name="s"/>
