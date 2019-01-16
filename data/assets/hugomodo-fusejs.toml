@@ -4,5 +4,3 @@ js = [
   "fuse.js",
   "search.js"
 ]
-
-scss = []
