@@ -1,17 +1,17 @@
 {{ define "main" }}
-  <main>
+  <main id="hugoModule-main">
     {{ if .Site.Data.config.hugomodo.hugomodoSite }}
       {{/* The partial is included with the base HugoModo theme. */}}
-      <header>
+      <header id="hugoModule-mainHeader">
         {{ partial "shared/breadcrumb-nav.html" . }}
       </header>
     {{ end }}
-    <article>
+    <article id="hugoModule-mainArticle">
       {{ if .Site.Data.config.hugomodo.hugomodoSite }}
         {{/* The partial is included with the base HugoModo theme. */}}
         {{ partial "article/header.html" . }}
       {{ end }}
-      <div>
+      <div id="hugoModule-mainArticleContent">
         {{ .Content }}
       </div>
       <aside>
